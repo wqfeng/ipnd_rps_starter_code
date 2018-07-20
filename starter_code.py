@@ -42,7 +42,11 @@ class HumanPlayer(Player):
 
 class ReflectPlayer(Player):
     def move(self):
-        return self.their_move
+        try:
+            return self.their_move
+        except AttributeError:
+            # throw a random with the very first move
+            return moves[random.randint(0, 2)]
 
     def learn(self, my_move, their_move):
         self.their_move = their_move
