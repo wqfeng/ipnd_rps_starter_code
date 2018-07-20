@@ -103,10 +103,10 @@ class Game:
         self.p1.learn(move1, move2)
         self.p2.learn(move2, move1)
 
-    def play_game(self):
+    def play_game(self, round=1):
         print("Game start!")
-        for round in range(4):
-            print(f"Round {round}:")
+        for r in range(round):
+            print(f"Round {r}:")
             self.play_round()
 
         # the final score
@@ -139,7 +139,7 @@ Who would you like to play with? Please enter "random", "reflect", "repeat", or 
             break
         elif mode.lower() == "reflect":
             game = Game(HumanPlayer("You"), ReflectPlayer("Computer"))
-            game.play_game()
+            game.play_game(3) # play multipel rounds
             break
         elif mode.lower() == "repeat":
             game = Game(HumanPlayer("You"), RepeatPlayer("Computer"))
